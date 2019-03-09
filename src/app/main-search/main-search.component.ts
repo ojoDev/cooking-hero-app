@@ -14,8 +14,9 @@ export class MainSearchComponent implements OnInit {
   ngOnInit() {
   }
 
+  
   searchRecipes(event: Event)  {
-    const recipeName = (<HTMLInputElement>event.target).value; // Se indica el component exacto para coger sus atributos
+    const recipeName = (<HTMLInputElement>event.target).value;
     this.searchRecipesService.searchRecipes(recipeName);
     console.log('search '+ recipeName);
   }

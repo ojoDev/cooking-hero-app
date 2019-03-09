@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SearchRecipesService } from '../services/search-recipes.service';
-import { stringify } from '@angular/core/src/util';
+import { RecipeResume } from '../beans/RecipeResume';
 
 @Component({
   selector: 'app-recipe-resume',
@@ -10,27 +10,23 @@ import { stringify } from '@angular/core/src/util';
 export class RecipeResumeComponent implements OnInit {
 
   @Input()
-  name: string;
+  recipe: RecipeResume = { name: '', description: ''};
 
-  @Input()
-  description: string;
-
-  constructor(private searchRecipesService: SearchRecipesService) { 
+  constructor(private searchRecipesService: SearchRecipesService) {
     this.searchRecipesService.recipesResult.subscribe(
-      (recipe: {name: string, description: string}) =>
+      (inputRecipe: RecipeResume) =>
         {
-          if (recipe === null) {
-            this.name = '';
-            this.description = '';
+          if (inputRecipe === null) {
+            this.recipe.name = '';
+            this.recipe.description = '';
           } else {
-            this.name = recipe.name;
-            this.description = recipe.description;
+            this.recipe.name = inputRecipe.name;
+            this.recipe.description = inputRecipe.description;
           }
         });
   }
 
   ngOnInit() {
-  
   }
 
 }
