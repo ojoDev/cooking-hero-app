@@ -1,4 +1,6 @@
 <p>
   <input type="text" class="form-control" (input)="searchRecipes($event)">
   <app-recipes-list></app-recipes-list>
+  <app-recipe-detail ng-disabled="hiddenDetail" ></app-recipe-detail>
+  <app-recipe-edit ng-disabled="hidden" ></app-recipe-edit>
 </p>

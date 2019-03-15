@@ -1,4 +1,11 @@
 export class RecipeResume {
-    name = '';
-    description = '';
+    id;
+    name;
+    description;
+
+    constructor() {
+        this.id = undefined;
+        this.name = undefined;
+        this.description = undefined;
+    }
 }

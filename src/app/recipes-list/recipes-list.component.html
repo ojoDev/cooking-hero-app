@@ -1,5 +1,17 @@
-<p>
-  <app-recipe-resume 
+
+  <!--<app-recipe-resume 
   *ngFor="let recipe of recipeList"
-  ></app-recipe-resume>
-</p>
+  ></app-recipe-resume>-->
+
+  <div class="selectable recipe-resume-container"
+  *ngFor="let recipe of recipeList"
+  (click)="onSelect(recipe)">
+  <p class="recipeName">
+    {{recipe.name}}
+  </p>
+  <p>
+    {{recipe.description}}
+  </p>
+  
+</div>
+

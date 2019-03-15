@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { SearchRecipesService } from '../services/search-recipes.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { RecipesService } from '../services/recipes.service';
 import { RecipeResume } from '../beans/RecipeResume';
+import { Recipe } from '../beans/Recipe';
 
 @Component({
   selector: 'app-recipes-list',
@@ -10,25 +11,30 @@ import { RecipeResume } from '../beans/RecipeResume';
 export class RecipesListComponent implements OnInit {
 
   @Input()
-  recipeList: RecipeResume [] = [{name: 'test1', description: 'yeha'}, {name: 'testw', description: 'www'}];
+  recipeList: RecipeResume [] = [];
 
-  constructor(private searchRecipesService: SearchRecipesService) {
-    this.searchRecipesService.recipesResult.subscribe(
-      (recipe: RecipeResume) =>
+  @Output() recipeResult = new EventEmitter<Recipe>();
+
+  constructor(private recipesService: RecipesService) {
+    this.recipesService.recipesResult.subscribe(
+      (recipeList: RecipeResume[]) =>
         {
-          if (recipe === null) {
-            this.recipeList[0].name = '';
-            this.recipeList[0].description = '';
+          if (recipeList === null) {
+            this.recipeList = [];
           } else {
-            this.recipeList[0].name = recipe.name;
-            this.recipeList[0].description = recipe.description;
+            this.recipeList = recipeList;
           }
         });
   }
 
 
   ngOnInit() {
-    
+
+  }
+
+  onSelect(recipeResume: RecipeResume) {
+    console.log('Recipe selected: ' + recipeResume.name);
+    this.recipesService.getRecipe(recipeResume.id);
   }
 
 }

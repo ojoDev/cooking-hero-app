@@ -1,0 +1,11 @@
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.gray-container{
+  border-radius: 10px 10px 10px 10px;
+  border: 2px solid rgb(99, 107, 114, .15);
+  padding: 0px; 
+  padding: 10px;
+  margin: 10px;
+}

@@ -1,24 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { SearchRecipesService } from '../services/search-recipes.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { RecipesService } from '../services/recipes.service';
 
 @Component({
   selector: 'app-main-search',
   templateUrl: './main-search.component.html',
   styleUrls: ['./main-search.component.css'],
-  providers: [SearchRecipesService]
+  providers: [RecipesService]
 })
 export class MainSearchComponent implements OnInit {
 
-  constructor(private searchRecipesService: SearchRecipesService) { }
+  @Input()
+  hiddenDetail = true;
+
+  constructor(private recipesService: RecipesService) { }
 
   ngOnInit() {
   }
 
-  
+
   searchRecipes(event: Event)  {
     const recipeName = (<HTMLInputElement>event.target).value;
-    this.searchRecipesService.searchRecipes(recipeName);
-    console.log('search '+ recipeName);
+    this.recipesService.getRecipes(recipeName);
+    console.log('search ' + recipeName);
   }
 
 }

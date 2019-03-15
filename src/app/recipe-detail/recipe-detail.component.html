@@ -1,0 +1,16 @@
+<div *ngIf="recipe" class="gray-container">
+    <h3>{{recipe.name}}</h3>
+  <p>
+    {{recipe.description}}
+  </p>
+  <div >
+    Preparation Time: {{recipe.preparationTime}}  Cooking Time: {{recipe.cookingTime}}  Cousine Type: {{recipe.cousineType}}
+  </div>
+  <p>Ingredients</p>
+  <app-ingredient-detail *ngFor="let ingredient of recipe.ingredients" [ingredient]="ingredient"></app-ingredient-detail>
+
+  <p>Steps</p>
+  <app-step-detail *ngFor="let step of recipe.steps" [step]="step" ></app-step-detail>
+
+  <p>User: {{recipe.user}}</p>
+</div>

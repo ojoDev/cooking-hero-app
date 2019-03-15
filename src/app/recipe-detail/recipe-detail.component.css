@@ -1,0 +1,10 @@
+@import '../app.component.css';
+ 
+.recipeName {
+    font-size: 20px;
+}
+
+.border-top-down{
+    border-top: 2px solid rgb(99, 107, 114, .15);
+    border-bottom: 2px solid rgb(99, 107, 114, .15);
+}
