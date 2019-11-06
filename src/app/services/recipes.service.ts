@@ -40,7 +40,23 @@ export class RecipesService {
     }
 
 
-    getRecipe(id: string) {
+
+
+    getRecipe(id: string): Observable<Recipe> {
+        if (id !== '') {
+            console.log('Searching recipe with id V2 ' + id);
+            const url = 'http://localhost:8080/recipes/' + id;
+            return this.http.get<JSON>(url, httpOptions).pipe(map (
+                response => {
+                    const recipe: Recipe = this.recipeMapper.toRecipe(response);
+                    // TODO DMS emit this in a subject (rx) => http://reactivex.io/documentation/subject.html
+                    this.recipeResult.emit(recipe);
+                    return recipe;
+                }));
+        }
+    }
+
+    getRecipe_old2(id: string) {
         if (id !== '') {
             console.log('Searching recipe with id ' + id);
             const url = 'http://localhost:8080/recipes/' + id;

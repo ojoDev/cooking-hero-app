@@ -11,6 +11,7 @@ import { StepDetailComponent } from './step-detail/step-detail.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AppRoutingModule } from './app-routing.module';
     RecipeDetailComponent,
     IngredientDetailComponent,
     StepDetailComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

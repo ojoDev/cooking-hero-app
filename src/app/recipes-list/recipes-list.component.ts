@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { RecipesService } from '../services/recipes.service';
 import { RecipeResume } from '../beans/RecipeResume';
 import { Recipe } from '../beans/Recipe';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipes-list',
@@ -15,7 +16,7 @@ export class RecipesListComponent implements OnInit {
 
   @Output() recipeResult = new EventEmitter<Recipe>();
 
-  constructor(private recipesService: RecipesService) {
+  constructor(private router: Router, private recipesService: RecipesService) {
     this.recipesService.recipesResult.subscribe(
       (recipeList: RecipeResume[]) =>
         {
@@ -34,7 +35,13 @@ export class RecipesListComponent implements OnInit {
 
   onSelect(recipeResume: RecipeResume) {
     console.log('Recipe selected: ' + recipeResume.name);
-    this.recipesService.getRecipe(recipeResume.id);
+    this.router.navigate(['/recipes', recipeResume.id]);
   }
+
+ 
+//  onSelect_old(recipeResume: RecipeResume) {
+//   console.log('Recipe selected: ' + recipeResume.name);
+//    this.recipesService.getRecipe(recipeResume.id);
+//  }
 
 }

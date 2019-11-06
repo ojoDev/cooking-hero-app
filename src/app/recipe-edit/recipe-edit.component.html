@@ -10,7 +10,7 @@
       <input type="text" [(ngModel)]="recipe.description" id="description"  name="description" class="form-control" placeholder="Description" ngModel required>
     </div>
 
-    <button type="submit" class="btn btn-primary">Update</button> 
+    <button (click)="goBack()" class="btn btn-default">Cancel</button><button type="submit" class="btn btn-primary">Update</button> 
 
     </form>
 </div>

@@ -6,12 +6,13 @@
   <div class="selectable recipe-resume-container"
   *ngFor="let recipe of recipeList"
   (click)="onSelect(recipe)">
-  <p class="recipeName">
-    {{recipe.name}}
-  </p>
-  <p>
-    {{recipe.description}}
-  </p>
-  
+  <!--<a routerLink="/recipes/{{recipe.id}}">-->
+    <p class="recipeName">
+      {{recipe.name}}
+    </p>
+    <p>
+      {{recipe.description}}
+    </p>
+<!--</a>-->
 </div>
 

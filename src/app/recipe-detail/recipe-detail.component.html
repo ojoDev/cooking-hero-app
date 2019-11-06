@@ -13,4 +13,5 @@
   <app-step-detail *ngFor="let step of recipe.steps" [step]="step" ></app-step-detail>
 
   <p>User: {{recipe.user}}</p>
+  <button (click)="goBack()" class="btn btn-default">Cancel</button><button (click)="goEdit()" class="btn btn-primary">Edit</button>
 </div>
